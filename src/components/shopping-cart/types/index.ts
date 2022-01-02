@@ -2,7 +2,7 @@ export interface Product{
     productId: string,
     name: string,
     description: string,
-    classification: string,
+    clasification: string,
     price: number,
     quantity: number
 }
