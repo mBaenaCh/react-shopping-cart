@@ -19,9 +19,35 @@ async function getProductById(productId: string): Promise<Product> {
     return await response.json();
 }
 
+type CreateProductRequest = {
+    name: string;
+    description: string;
+    price: number;
+    quantity: number;
+};
+
+type CreateProductResponse = {
+    product: Product;
+};
+
+async function createProduct(
+    request: CreateProductRequest
+): Promise<CreateProductResponse> {
+    const response = await fetch(BASE_URL+"/products", {
+        method: "POST",
+        body: JSON.stringify(request),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+
+    return await response.json();
+}
+
 const client = {
     getAllProducts,
-    getProductById
+    getProductById,
+    createProduct
 };
 
 export default client;

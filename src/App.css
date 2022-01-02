@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+.container{
+  width: 80%;
+  margin: 30px auto 0 auto;
+  display: flex;
+}
+
+.product-list{
+    width: 60%;
+    padding: 10px;
+}
+
+.product-form{
+  width: 40%;
+  padding: 10px;
+}
