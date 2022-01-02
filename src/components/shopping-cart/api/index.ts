@@ -11,8 +11,17 @@ async function getAllProducts(): Promise<Product[]>{
     return await response.json();
 }
 
+async function getProductById(productId: string): Promise<Product> {
+    const response = await fetch(`${BASE_URL+"/products"}/${productId}`, {
+        method: "GET",
+    });
+
+    return await response.json();
+}
+
 const client = {
-    getAllProducts
+    getAllProducts,
+    getProductById
 };
 
 export default client;
