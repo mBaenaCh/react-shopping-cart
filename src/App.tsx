@@ -2,8 +2,7 @@ import AppBar from '../src/components/shared/app-bar';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
-import ProductsTable from './components/shopping-cart/products-table';
-import ProductForm from './components/shopping-cart/product-form';
+import ProductsPage from './components/shopping-cart/pages/product-page';
 
 function App() {
   return (
@@ -11,15 +10,11 @@ function App() {
     <BrowserRouter>
       <CssBaseline />
       <AppBar />
-      <div className="container">
-        <div className="product-form">
-          <ProductForm />
-        </div>
-        <div className="product-list">
-          <ProductsTable />
-        </div>
-      </div>
-
+    
+    <Routes>
+      <Route path="/products" element={<ProductsPage />}/>
+    </Routes>
+  
     </BrowserRouter>
 
   );

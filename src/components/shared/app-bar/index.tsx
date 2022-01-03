@@ -8,6 +8,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { LocalGroceryStore } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
@@ -22,7 +23,15 @@ const ShoppingCartAppBar = () => {
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
-                    
+                    <IconButton
+                        size="large"
+                        edge="start"
+                        color="inherit"
+                        aria-label="menu"
+                        sx={{ mr: 2 }}
+                    >
+                        <LocalGroceryStore />
+                    </IconButton>
                     <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                         <Menu
                             id="menu-appbar"
@@ -49,7 +58,6 @@ const ShoppingCartAppBar = () => {
                             ))}
                         </Menu>
                     </Box>
-
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                         {pages.map((page) => (
                             <Button
