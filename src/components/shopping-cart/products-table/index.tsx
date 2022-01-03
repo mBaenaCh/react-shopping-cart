@@ -15,12 +15,19 @@ import Link from '@mui/material/Link';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+
 function productToRow(product: Product) {
 
-  function handleOnDelete(product: any){
-      const { productId } = product;
-      shoppingCartClient.deleteProductById(productId);
-      window.location.reload();
+  function handleOnDelete(product: any) {
+    const { productId } = product;
+    shoppingCartClient.deleteProductById(productId);
+    window.location.reload();
+  }
+
+  function handleOnAdd(product: any) {
+    const { productId } = product;
+    shoppingCartClient.addProductToShoppingCart("945de5a5-c8cd-4cba-bf4a-90526c78cba5", productId);
+    window.location.reload();
   }
 
   return (
@@ -35,7 +42,7 @@ function productToRow(product: Product) {
       <TableCell align="left">{product.clasification}</TableCell>
       <TableCell align="left">$ {product.price} USD</TableCell>
       <TableCell align="left">{product.quantity}</TableCell>
-      <TableCell><IconButton><AddShoppingCartIcon /></IconButton></TableCell>
+      <TableCell><IconButton onClick={() => handleOnAdd(product)}><AddShoppingCartIcon /></IconButton></TableCell>
       <TableCell><IconButton onClick={() => handleOnDelete(product)}><DeleteIcon /></IconButton></TableCell>
     </TableRow>
   );
@@ -58,7 +65,7 @@ export default function ProductsTable() {
   if (data) {
     const products = data.map((product) => productToRow(product));
 
-    return (      
+    return (
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -78,6 +85,7 @@ export default function ProductsTable() {
           </TableBody>
         </Table>
       </TableContainer>
+
     );
   }
   return null;

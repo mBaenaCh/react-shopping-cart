@@ -1,13 +1,12 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
-import ShoppingCartList from '../products-cart';
+import './MainPage.css';
+import logo from '../../../../src/logo.svg';
 
 export default function MainPage() {
     return (
-        <>
-            <Typography variant="h3" component="div" gutterBottom>
-                Shopping cart
-            </Typography>
-        </>
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+            </header>
+        </div>
     );
 }

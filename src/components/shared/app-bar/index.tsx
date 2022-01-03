@@ -8,8 +8,6 @@ import { LocalGroceryStore } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { Link } from "react-router-dom";
 
-const pages = ['Products', 'Shopping cart'];
-
 type LinkProps = {
     to: string;
 };
@@ -41,13 +39,6 @@ const ShoppingCartAppBar = () => {
                             to="/products"
                         >
                             Products
-                        </Button>
-                        <Button
-                            sx={{ my: 2, color: 'white', display: 'block' }}
-                            component={LinkBehavior}
-                            to="/shopping-cart"
-                        >
-                            Shopping cart
                         </Button>
                     </Box>
 
