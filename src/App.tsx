@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import AppBar from '../src/components/shared/app-bar';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CssBaseline } from '@mui/material';
+import ProductsPage from './components/shopping-cart/pages/product-page';
+import EditProductPage from './components/shopping-cart/pages/product-details';
+import MainPage from './components/shopping-cart/pages/main-page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+      <CssBaseline />
+      <AppBar />
+    <Routes>
+      <Route path="/" element={<MainPage/>}/>
+      <Route path="/products" element={<ProductsPage />}/>
+      <Route path="/details/:productId" element={<EditProductPage />}/>
+    </Routes>
+  
+    </BrowserRouter>
+
   );
 }
 
