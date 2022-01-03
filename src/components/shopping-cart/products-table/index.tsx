@@ -13,7 +13,6 @@ import shoppingCartClient from '../api';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
 
-
 function productToRow(product: Product) {
   return (
     <TableRow key={product.productId}>
@@ -48,7 +47,7 @@ export default function ProductsTable() {
   if (data) {
     const products = data.map((product) => productToRow(product));
 
-    return (
+    return (      
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

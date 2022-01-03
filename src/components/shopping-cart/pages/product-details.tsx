@@ -6,7 +6,6 @@ import * as yup from 'yup';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import InputAdornment from '@mui/material/InputAdornment';
-import usePromise from '../../shared/use-promise';
 
 const validationSchema = yup.object({
     name: yup.string()

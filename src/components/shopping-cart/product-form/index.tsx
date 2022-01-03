@@ -1,11 +1,11 @@
 import { Formik, FormikHelpers } from 'formik';
-import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import shoppingCartClient from '../api';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './Form.css';
 import InputAdornment from '@mui/material/InputAdornment';
+import { Typography } from '@mui/material';
 
 yup.setLocale({
     number: {
@@ -63,6 +63,7 @@ function ProductForm() {
     };
 
     return (
+
         <Formik<FormValues>
             initialValues={initialValues}
             onSubmit={handleSubmit}
@@ -72,6 +73,9 @@ function ProductForm() {
                 return (
 
                     <div className='form-box'>
+                        <Typography variant="h5" gutterBottom component="div">
+                            Crear producto
+                        </Typography>
                         <form onSubmit={formikProps.handleSubmit}>
                             <div className='form-group'>
                                 <TextField
