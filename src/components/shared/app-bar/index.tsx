@@ -2,11 +2,8 @@ import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import { LocalGroceryStore } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { Link } from "react-router-dom";
@@ -21,11 +18,6 @@ const LinkBehavior = React.forwardRef<HTMLAnchorElement, LinkProps>(
 );
 
 const ShoppingCartAppBar = () => {
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     return (
         <AppBar position="static">
@@ -53,7 +45,7 @@ const ShoppingCartAppBar = () => {
                         <Button
                             sx={{ my: 2, color: 'white', display: 'block' }}
                             component={LinkBehavior}
-                            to="/products"
+                            to="/shopping-cart"
                         >
                             Shopping cart
                         </Button>

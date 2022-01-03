@@ -1,4 +1,4 @@
-import { Product } from "../types";
+import { Product, ShoppingCart } from "../types";
 
 const BASE_URL = "http://localhost:8080/api/shopping-cart";
 
@@ -13,6 +13,14 @@ async function getAllProducts(): Promise<Product[]>{
 
 async function getProductById(productId: string | undefined): Promise<Product> {
     const response = await fetch(`${BASE_URL+"/products"}/${productId}`, {
+        method: "GET",
+    });
+
+    return await response.json();
+}
+
+async function getShoppingCartById(clientId: string | undefined): Promise<ShoppingCart>{
+    const response = await fetch(`${BASE_URL}/${clientId}`, {
         method: "GET",
     });
 
@@ -59,11 +67,22 @@ async function updateProductById(
     return await response.json();
 }
 
+async function deleteProductById(productId : string | undefined): Promise<void>{
+    const response = await fetch(BASE_URL+`/products/${productId}`, {
+        method: "DELETE",
+        headers:{
+            "Content-Type": "application/json",
+        },
+    });
+}
+
 const client = {
     getAllProducts,
     getProductById,
     createProduct,
-    updateProductById
+    updateProductById,
+    deleteProductById,
+    getShoppingCartById
 };
 
 export default client;

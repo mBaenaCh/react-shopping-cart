@@ -6,14 +6,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import { Product } from '../types';
 import usePromise from '../../shared/use-promise';
 import shoppingCartClient from '../api';
 import { Link as RouterLink } from 'react-router-dom';
 import Link from '@mui/material/Link';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function productToRow(product: Product) {
+
+  function handleOnDelete(product: any){
+      const { productId } = product;
+      shoppingCartClient.deleteProductById(productId);
+      window.location.reload();
+  }
+
   return (
     <TableRow key={product.productId}>
       <TableCell align="left">
@@ -26,6 +35,8 @@ function productToRow(product: Product) {
       <TableCell align="left">{product.clasification}</TableCell>
       <TableCell align="left">$ {product.price} USD</TableCell>
       <TableCell align="left">{product.quantity}</TableCell>
+      <TableCell><IconButton><AddShoppingCartIcon /></IconButton></TableCell>
+      <TableCell><IconButton onClick={() => handleOnDelete(product)}><DeleteIcon /></IconButton></TableCell>
     </TableRow>
   );
 }
@@ -58,6 +69,8 @@ export default function ProductsTable() {
               <TableCell align="left">Clasificación</TableCell>
               <TableCell align="left">Precio</TableCell>
               <TableCell align="left">Cantidad</TableCell>
+              <TableCell>Añadir</TableCell>
+              <TableCell>Eliminar</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

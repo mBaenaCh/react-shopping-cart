@@ -6,3 +6,11 @@ export interface Product{
     price: number,
     quantity: number
 }
+
+export interface ShoppingCart{
+    clientId: string,
+    createdAt: string,
+    updatedAt: string,
+    products: Product[],
+    total: number
+}
