@@ -10,11 +10,18 @@ import { CircularProgress } from '@mui/material';
 import { Product } from '../types';
 import usePromise from '../../shared/use-promise';
 import shoppingCartClient from '../api';
+import { Link as RouterLink } from 'react-router-dom';
+import Link from '@mui/material/Link';
+
 
 function productToRow(product: Product) {
   return (
     <TableRow key={product.productId}>
-      <TableCell align="left">{product.productId}</TableCell>
+      <TableCell align="left">
+        <Link component={RouterLink} to={`/details/${product.productId}`}>
+          {product.productId}
+        </Link>
+      </TableCell>
       <TableCell align="left">{product.name}</TableCell>
       <TableCell align="left">{product.description}</TableCell>
       <TableCell align="left">{product.clasification}</TableCell>

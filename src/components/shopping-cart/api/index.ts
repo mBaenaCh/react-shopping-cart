@@ -11,7 +11,7 @@ async function getAllProducts(): Promise<Product[]>{
     return await response.json();
 }
 
-async function getProductById(productId: string): Promise<Product> {
+async function getProductById(productId: string | undefined): Promise<Product> {
     const response = await fetch(`${BASE_URL+"/products"}/${productId}`, {
         method: "GET",
     });
@@ -44,10 +44,26 @@ async function createProduct(
     return await response.json();
 }
 
+async function updateProductById(
+    productId: string | undefined,
+    request: CreateProductRequest
+): Promise<CreateProductResponse> {
+    const response = await fetch(BASE_URL+`/products/${productId}`, {
+        method: "PUT",
+        body: JSON.stringify(request),
+        headers:{
+            "Content-Type": "application/json",
+        },
+    });
+
+    return await response.json();
+}
+
 const client = {
     getAllProducts,
     getProductById,
-    createProduct
+    createProduct,
+    updateProductById
 };
 
 export default client;

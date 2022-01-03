@@ -1,17 +1,12 @@
+import { useParams } from 'react-router-dom';
+import shoppingCartClient from '../api';
 import { Formik, FormikHelpers } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
-import shoppingCartClient from '../api';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import './Form.css';
 import InputAdornment from '@mui/material/InputAdornment';
-
-yup.setLocale({
-    number: {
-        max: 'La cantidad no debe ser mayor a ${max}',
-    }
-});
+import usePromise from '../../shared/use-promise';
 
 const validationSchema = yup.object({
     name: yup.string()
@@ -45,20 +40,22 @@ const initialValues: FormValues = {
     quantity: 0
 };
 
-function ProductForm() {
-    //const navigate = useNavigate();
+function EditProductPage() {
+    const { productId } = useParams();
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (
         formValues: FormValues,
         helpers: FormikHelpers<FormValues>
     ) => {
-        await shoppingCartClient.createProduct(formValues);
+        await shoppingCartClient.updateProductById(productId, formValues);
 
         helpers.resetForm({
             values: initialValues,
         });
 
-        //navigate("/");
+        navigate("/");
         window.location.reload();
     };
 
@@ -153,4 +150,4 @@ function ProductForm() {
     );
 }
 
-export default ProductForm;
+export default EditProductPage;
